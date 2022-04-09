@@ -7,7 +7,7 @@ import copyWorker from "./routes/copyWorker.route";
 import uploads from "./routes/uploads.route";
 import search from "./routes/search.route";
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 mySQL.init();
