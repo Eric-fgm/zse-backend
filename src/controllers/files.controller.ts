@@ -108,34 +108,41 @@ const upload: RequestHandler = async (req, res) => {
 };
 
 const uploadRequest: RequestHandler = async (req, res) => {
-  if (
-    !req.body ||
-    !req.body.name ||
-    !req.body.size ||
-    typeof req.body.type !== "string"
-  ) {
-    res.status(400).json({ message: 'Missing "fields"' });
-  } else {
-    const uniqueId = uuid();
-    const { name, type } = req.body;
-    const filePath = helpers.getFilePath(name, uniqueId);
-    fs.createWriteStream(filePath, {
-      flags: "w",
-    });
+  try {
+    if (
+      !req.body ||
+      !req.body.name ||
+      !req.body.size ||
+      typeof req.body.type !== "string"
+    ) {
+      res.status(400).json({ message: 'Missing "fields"' });
+    } else {
+      const uniqueId = uuid();
+      const { name, type } = req.body;
+      const filePath = helpers.getFilePath(name, uniqueId);
+      fs.createWriteStream(filePath, {
+        flags: "w",
+      });
 
-    const createdFile = await filesService.create({
-      name,
-      size: 0,
-      type,
-      path: filePath,
-    });
+      const createdFile = await filesService.create({
+        name,
+        size: 0,
+        type,
+        path: filePath,
+      });
 
-    if (!createdFile) return res.status(500).json({ message: "Error" });
+      if (!createdFile) return res.status(500).json({ message: "Error" });
 
-    return res.status(200).json({
-      uniqueId,
-      fileId: createdFile.id,
-      ...createdFile,
+      return res.status(200).json({
+        uniqueId,
+        fileId: createdFile.id,
+        ...createdFile,
+      });
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(500).json({
+      message: "Error :/",
     });
   }
 };
