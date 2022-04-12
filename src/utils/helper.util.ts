@@ -18,7 +18,7 @@ const emptyOrRows = <T>(rows?: T) => {
 };
 
 const getFilePath = (fileName: string, fileId: string) =>
-  `src/uploads/file-${fileId}-${fileName}`;
+  __dirname + `/../uploads/file-${fileId}-${fileName}`;
 
 const getRootFilePath = (id: string) => `src/uploads/${id}`;
 
