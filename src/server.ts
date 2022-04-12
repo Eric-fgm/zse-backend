@@ -22,5 +22,5 @@ app.use("/copy-worker", copyWorker);
 app.use("/src/uploads", uploads);
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`${PORT}`);
 });
