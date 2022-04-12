@@ -184,7 +184,6 @@ const remove: RequestHandler = async (req, res) => {
     const paths = await filesService.getNameWithPaths(ids);
     paths.forEach(({ path }) => {
       fs.existsSync(path) && fs.unlinkSync(path);
-      console.log(`deleted ${path}`);
     });
     return res.json(await filesService.remove(ids));
   } catch (err) {
