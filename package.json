@@ -1,7 +1,10 @@
 {
   "name": "zse-backend",
   "version": "1.0.0",
-  "main": "server.ts",
+  "main": "build/server.js",
+  "engines": {
+    "node": "16.x"
+  },
   "license": "MIT",
   "dependencies": {
     "@types/uuid": "^8.3.4",
@@ -17,6 +20,7 @@
   },
   "scripts": {
     "dev": "nodemon src/server.ts",
+    "start": "node build/server",
     "build": "tsc --build"
   },
   "devDependencies": {
