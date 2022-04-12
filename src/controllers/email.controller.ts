@@ -29,17 +29,19 @@ const send: RequestHandler = async (req, res) => {
 
     const transporter = nodemailer.createTransport(
       smtpTransport({
-        service: "gmail",
-        host: "smtp.gmail.com",
+        host: "smtp.sendgrid.net",
+        port: 587,
+        ignoreTLS: false,
+        secure: false,
         auth: {
-          user: "my.smtp.credencials@gmail.com", // generated ethereal user
-          pass: "etc/passwd/smtp", // generated ethereal password
+          user: "apikey", // generated ethereal user
+          pass: "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", // generated ethereal password
         },
       })
     );
 
     const info = await transporter.sendMail({
-      from: "ZSE", // sender address
+      from: "<my.smtp.credencials@gmail.com>", // sender address
       to: recipient, // list of receivers
       subject: topic, // Subject line
       text: content, // plain text body
