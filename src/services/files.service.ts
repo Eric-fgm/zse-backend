@@ -40,10 +40,10 @@ const search = async (query: string) => {
 async function create(file: Omit<Omit<TFIle, "id">, "dateCreated">) {
   const result = await execute<boolean>(
     `INSERT INTO files 
-    (name, type, size, path)
+    (name, type, size, path, pinned)
     VALUES 
-    (?, ?, ?, ?)`,
-    [file.name, file.type, file.size, file.path]
+    (?, ?, ?, ?, ?)`,
+    [file.name, file.type, file.size, file.path, file.pinned]
   );
 
   let fileOutput = null;

@@ -4,6 +4,7 @@ export type TFIle = {
   name: string;
   size: number;
   path: string;
+  pinned: string;
   dateCreated: number;
 };
 

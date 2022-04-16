@@ -128,6 +128,7 @@ const uploadRequest: RequestHandler = async (req, res) => {
         name,
         size: 0,
         type,
+        pinned: "0",
         path: filePath,
       });
 
