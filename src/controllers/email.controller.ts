@@ -52,6 +52,7 @@ const send: RequestHandler = async (req, res) => {
       recipient,
       topic,
       content,
+      pinned: "0",
       attachments: attachments || "",
     });
 
