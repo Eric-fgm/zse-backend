@@ -17,7 +17,7 @@ const get: RequestHandler = async (req, res, next) => {
 
 const create: RequestHandler = async (req, res, next) => {
   try {
-    res.json(await copyWorkerService.create(req.body));
+    res.json(await copyWorkerService.create({ ...req.body, pinned: "0" }));
   } catch (err) {
     console.error(
       `Error while creating programming language`,

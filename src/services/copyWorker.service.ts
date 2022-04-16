@@ -44,14 +44,15 @@ async function create(
 ) {
   const result = await execute<boolean>(
     `INSERT INTO copy_worker 
-    (recipient, topic, content, attachments) 
+    (recipient, topic, content, attachments, pinned) 
     VALUES 
-    (?, ?, ?, ?)`,
+    (?, ?, ?, ?, ?)`,
     [
       copyWorker.recipient,
       copyWorker.topic,
       copyWorker.content,
       copyWorker.attachments,
+      copyWorker.pinned,
     ]
   );
 

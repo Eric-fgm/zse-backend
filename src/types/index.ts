@@ -14,5 +14,6 @@ export type TCopyWorker = {
   topic: string;
   content: string;
   attachments: string;
+  pinned: string;
   dateCreated: number;
 };
