@@ -1,4 +1,5 @@
 import fs from "fs";
+import { extname } from "path";
 import { promisify } from "util";
 
 const paginationMeta = (currentPage = 1, itemsPerPage: number) => {
@@ -18,7 +19,7 @@ const emptyOrRows = <T>(rows?: T) => {
 };
 
 const getFilePath = (fileName: string, fileId: string) =>
-  `src/uploads/file-${fileId}`;
+  `src/uploads/file-${fileId}${extname(fileName)}`;
 
 const getRootFilePath = (id: string) => `src/uploads/${id}`;
 
